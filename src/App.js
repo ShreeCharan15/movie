@@ -6,8 +6,34 @@ import {Row,Col,Button} from 'reactstrap';
 import PageModal from './PageModal';
 import {fetchDogData} from './backend'
 import {Spinner} from 'reactstrap'
-function App() {
+import { Routes, Route } from "react-router-dom";
 
+
+
+function App() {
+return <div>
+  <NavigationBar ></NavigationBar>
+  <div className='container'>
+  <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route path="contact" element={<ContactPage></ContactPage>}></Route>
+</Routes>
+  </div>
+</div>
+  
+}
+
+export default App;
+
+const ContactPage=()=>{
+  return <div>CONTACT PAGE</div>
+}
+
+const AboutPage=()=>{
+  return <div>ABOUT PAGE</div>
+}
+const HomePage=()=>{
   useEffect(()=>{
     //TODO: fetch data from server
     fetchDogData()
@@ -34,20 +60,17 @@ function App() {
   })
   return (
   <>
-    <NavigationBar ></NavigationBar>
+    
 
-    <div className='container'>
+    
       {
         state.isLoading?<Loading></Loading>
         :state.error?<Error></Error>
         :<DogInfo dogData={state.data}></DogInfo>
       }
-    </div>
   </>
   );
 }
-
-export default App;
 
 const Loading=()=>{
   return <div style={{"height":"100vh",width:"100%"}}>

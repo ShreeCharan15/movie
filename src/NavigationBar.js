@@ -1,5 +1,6 @@
 import { Navbar,NavbarBrand,Collapse,Nav, NavItem, NavLink, NavbarToggler } from "reactstrap";
 import { useState } from "react";
+import {Link} from 'react-router-dom'
 const NavigationBar=()=>{
     const [isOpen,setIsOpen]=useState(false);
     return <Navbar color="dark" dark={true} expand="md">
@@ -10,11 +11,14 @@ const NavigationBar=()=>{
         <NavbarToggler onClick={()=>setIsOpen(!isOpen)}></NavbarToggler>
         <Collapse navbar  isOpen={isOpen}>
             <Nav className="me-auto" navbar>
-                <NavItem>
-                    <NavLink href="/components/">Components</NavLink>
+            <NavItem>
+                    <Link to="/">Home</Link>
                 </NavItem>
                 <NavItem>
-                    <NavLink href="/components/">Components</NavLink>
+                    <Link to="/about/">About</Link>
+                </NavItem>
+                <NavItem>
+                    <Link to="/contact/">Contact</Link>
                 </NavItem>
             </Nav>
         </Collapse>
